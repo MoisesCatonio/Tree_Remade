@@ -11,11 +11,12 @@ a.add_filho(c) #c deixa de ser raiz
 b.add_filho(d)
 
 x = b.busca_root() # Buscando a raiz da árvore para iniciar a busca em pós ordem
+print(x.valor)
 
-x.delete(0)
+
+x.delete(3)
 
 x = b.busca_root()
-
 print(x.valor)
 
 y = x.busca_pos_ordem(0)

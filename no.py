@@ -42,14 +42,13 @@ class no:
             print("O pai já possui 2 filhos, passando para o nó mais a esquerda da sub arvore!")
 
     def F_e_o_F_d(self):
-        if(self.valor == self.pai.filho_dir.valor):
+        if(self.pai.filho_dir != None and self.valor == self.pai.filho_dir.valor):
             self.pai.filho_dir = None
         else:
             self.pai.filho_esq = None
 
     def busca_root(self):
         if(self.isroot == 1):
-            print("Raiz encontrada! Retornando nó!")
             return self
         else:
             return self.pai.busca_root()

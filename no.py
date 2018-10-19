@@ -39,9 +39,9 @@ class no:
 
     def busca_pos_ordem(self, valor):
         if(self.filho_esq != None and self.filho_esq.acessado == 0):
-            self.filho_esq.busca_pos_ordem(valor)
+            return self.filho_esq.busca_pos_ordem(valor)
         if(self.filho_dir != None and self.filho_dir.acessado == 0):
-             self.filho_dir.busca_pos_ordem(valor)
+             return self.filho_dir.busca_pos_ordem(valor)
         if(self.valor == valor):
             print("Elemento encontrado! Retornando nó")
             self.busca_root().zerar_acessos()
@@ -49,5 +49,6 @@ class no:
         else:
             self.acessado = 1
             if(self.pai != None):
-                self.pai.busca_pos_ordem(valor)
+                return self.pai.busca_pos_ordem(valor)
         self.zerar_acessos()
+        return

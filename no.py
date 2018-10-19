@@ -21,7 +21,8 @@ class no:
             self.filho_dir.isroot = 0
             self.filho_dir.pai = self
         else:
-            print("O pai já possui 2 filhos, atribuição cancelada!")
+            self.filho_esq.add_filho(no_filho)
+            print("O pai já possui 2 filhos, passando para o nó mais a esquerda da sub arvore!")
 
     def busca_root(self):
         if(self.isroot == 1):
@@ -51,4 +52,37 @@ class no:
             if(self.pai != None):
                 return self.pai.busca_pos_ordem(valor)
         self.zerar_acessos()
+        print("Valor não encontrado na árvore")
         return
+    
+    def delete(self, valor):
+        to_remove = self.busca_pos_ordem(valor)
+
+        if(to_remove.isroot == 0):
+            if(to_remove.filho_esq != None and to_remove.filho_dir != None):
+                to_remove.pai.filho_esq = to_remove.filho_esq
+                to_remove.filho_esq.pai = to_remove.pai
+                to_remove.filho_esq.add_filho(to_remove.filho_dir)
+                del to_remove
+            elif(to_remove.filho_esq != None and to_remove.filho_dir == None):
+                to_remove.pai.filho_esq = to_remove.filho_esq
+                to_remove.filho_esq.pai = to_remove.pai
+                del to_remove
+            else:
+                if(to_remove.valor == to_remove.pai.filho_esq.valor):
+                    to_remove.pai.filho_esq = None
+                    del to_remove
+                else:
+                    to_remove.pai.filho_dir = None
+                    del to_remove
+        else:
+            if(to_remove.filho_esq != None and to_remove.filho_dir != None):
+                to_remove.filho_esq.pai = None 
+                to_remove.filho_esq.isroot = 1
+                to_remove.filho_esq.add_filho(to_remove.filho_dir)
+                del to_remove
+            elif(to_remove.filho_esq != None and to_remove.filho_dir == None):
+                to_remove.pai.add_filho(to_remove.filho_esq)
+                del to_remove
+            else:
+                del to_remove

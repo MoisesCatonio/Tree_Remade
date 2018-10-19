@@ -13,6 +13,7 @@ print(b.isroot)
 print(c.isroot)
 print(d.isroot)
 
-b.busca_root()
+x = b.busca_root() # Buscando a raiz da árvore para iniciar a busca em pós ordem
+y = x.busca_pos_ordem(2)
 
-print(x.valor)
+print(y.valor)

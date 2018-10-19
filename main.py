@@ -10,13 +10,12 @@ a.add_filho(b) #b deixa de ser raiz
 a.add_filho(c) #c deixa de ser raiz
 b.add_filho(d)
 
-print(b.isroot)
-print(c.isroot)
-print(d.isroot)
-
 x = b.busca_root() # Buscando a raiz da árvore para iniciar a busca em pós ordem
 
 x.delete(0)
 
+x = b.busca_root()
+
+print(x.valor)
+
 y = x.busca_pos_ordem(0)
-print(y.valor)

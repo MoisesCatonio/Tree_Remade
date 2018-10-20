@@ -10,15 +10,18 @@ class no:
         self.acessado = 0
         #Todos os nós são iniciados como possíveis raízes, até que na adição como filhos,
         #tem seu atributo de raiz alterado;
-    def __del__(self):
-        print(self.valor)
-        print("Morreu")
-        self.valor = None
-        self.filho_esq = None
-        self.filho_dir = None
-        self.pai = None
-        self.isroot = None
-        self.acessado = None
+    
+
+    #Destrutor para informar quais nós instanciados morreram ao final do programa
+    # def __del__(self):
+    #     print(self.valor)
+    #     print("Morreu")
+    #     self.valor = None
+    #     self.filho_esq = None
+    #     self.filho_dir = None
+    #     self.pai = None
+    #     self.isroot = None
+    #     self.acessado = None
 
     def remove_references(self):
         self.valor = None
@@ -60,13 +63,23 @@ class no:
              self.filho_dir.zerar_acessos()
         self.acessado = 0
 
+    def printer(self):
+        if(self.filho_esq != None):
+            self.filho_esq.printer()
+        if(self.filho_dir != None):
+            self.filho_dir.printer()
+        if(self.isroot == 0):
+            print("Nó com valor "+ str(self.valor) + ", filho do nó de valor " + str(self.pai.valor)+".") 
+        else:
+            print("Nó raiz, de valor " + str(self.valor))
+
     def busca_pos_ordem(self, valor):
         if(self.filho_esq != None and self.filho_esq.acessado == 0):
             return self.filho_esq.busca_pos_ordem(valor)
         if(self.filho_dir != None and self.filho_dir.acessado == 0):
              return self.filho_dir.busca_pos_ordem(valor)
         if(self.valor == valor):
-            print("Elemento encontrado! Retornando nó")
+            print("Elemento com valor "+ str(valor) +" encontrado! Retornando nó")
             self.busca_root().zerar_acessos()
             return self
         else:
@@ -74,7 +87,7 @@ class no:
             if(self.pai != None):
                 return self.pai.busca_pos_ordem(valor)
         self.zerar_acessos()
-        print("Valor não encontrado na árvore")
+        print("Valor "+ str(valor) +" não encontrado na árvore")
         return
     
     def delete(self, valor):

@@ -86,3 +86,6 @@ class no:
                 del to_remove
             else:
                 del to_remove
+
+    def print(self):
+        pass

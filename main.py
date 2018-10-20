@@ -8,7 +8,7 @@ d = no.no(3)  #   d
 
 a.add_filho(b) #b deixa de ser raiz
 a.add_filho(c) #c deixa de ser raiz
-b.add_filho(d)
+a.add_filho(d)
 
 print(b.isroot)
 print(c.isroot)
@@ -18,5 +18,5 @@ x = b.busca_root() # Buscando a raiz da árvore para iniciar a busca em pós ord
 
 x.delete(0)
 
-y = x.busca_pos_ordem(0)
+y = x.busca_pos_ordem(3)
 print(y.valor)

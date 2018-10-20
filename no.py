@@ -91,6 +91,24 @@ class no:
         print("Valor "+ str(valor) +" não encontrado na árvore")
         return
 
+    def busca_em_ordem(self, valor):
+        print("[em]->estou em: " + str(self.valor))
+        if(self.filho_esq != None and self.filho_esq.acessado == 0):
+            return self.filho_esq.busca_em_ordem(valor)
+        if(self.valor == valor):
+            print("Elemento com valor "+ str(valor) +" encontrado! Retornando nó")
+            self.busca_root().zerar_acessos()
+            return self
+        if(self.filho_dir != None and self.filho_dir.acessado == 0):
+             return self.filho_dir.busca_em_ordem(valor)
+        else:
+            self.acessado = 1
+            if(self.pai != None):
+                return self.pai.busca_em_ordem(valor)
+        self.zerar_acessos()
+        print("Valor "+ str(valor) +" não encontrado na árvore")
+        return
+
     def busca_pos_ordem(self, valor):
         print("[pos]->estou em: " + str(self.valor))
         if(self.filho_esq != None and self.filho_esq.acessado == 0):

@@ -26,5 +26,6 @@ print(x.valor)
 
 x.busca_pos_ordem(0)
 x.busca_pre_ordem(4)
+x.busca_em_ordem(4)
 
 x.printer()
